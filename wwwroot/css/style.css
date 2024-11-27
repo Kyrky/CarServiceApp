@@ -1,0 +1,126 @@
+body {
+    font-family: 'Arial', sans-serif;
+    color: #212529;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.navbar {
+    border-bottom: 2px solid #0d6efd;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: black;
+}
+
+.nav-link {
+    font-size: 1rem;
+    transition: color 0.3s;
+    color: black;
+}
+
+    .nav-link:hover {
+        color: #0d6efd;
+    }
+
+main {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    background: rgb(202, 228, 252);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #004085;
+    }
+
+footer {
+    background: #343a40;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 20px;
+    margin-top: auto;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+h1, h2, h3 {
+    color: #0d6efd;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+    table th, table td {
+        text-align: left;
+        padding: 10px;
+        border: 1px solid #ddd;
+    }
+
+    table th {
+        background-color: #f1f1f1;
+        font-weight: bold;
+    }
+
+    table tbody tr:hover {
+        background-color: #f9f9f9;
+    }
+
+h1 {
+    color: black;
+}
+
+mb-0 {
+    color: black;
+}
+
+.btn-warning {
+    background-color: #ffa500;
+    border-color: #ffa500;
+    color: #fff;
+}
+
+.btn-warning:hover {
+        background-color: #e59400;
+        border-color: #e59400;
+    }
+
+.footer {
+    color: black;
+}
+
+    .text {
+        text-decoration: none;
+    }
+        
+

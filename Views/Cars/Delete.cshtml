@@ -1,0 +1,20 @@
+﻿@model CarServiceApp.Models.Car
+
+<h1 class="text-center text-danger">Видалення автомобіля</h1>
+<p class="text-center">Ви дійсно хочете видалити цей автомобіль?</p>
+
+<div class="card bg-light mx-auto" style="width: 24rem;">
+    <img src="@(string.IsNullOrEmpty(Model.PhotoPath) ? "def.png" : Model.PhotoPath)" class="card-img-top" alt="Фото автомобіля">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Brand @Model.Model</h5>
+        <p class="card-text"><strong>Рік:</strong> @Model.Year</p>
+        <p class="card-text"><strong>VIN:</strong> @Model.Vin</p>
+        <p class="card-text"><strong>Тип двигуна:</strong> @Model.EngineType</p>
+    </div>
+</div>
+
+<form asp-action="DeleteConfirmed" method="post" class="text-center mt-3">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Видалити</button>
+    <a asp-action="Index" class="btn btn-secondary">Скасувати</a>
+</form>

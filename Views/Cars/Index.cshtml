@@ -1,0 +1,97 @@
+﻿@model IEnumerable<CarServiceApp.Models.Car>
+
+<h1 class="text-center">Список автомобілів</h1>
+
+<!-- Форма поиска -->
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <form method="get" class="d-flex">
+        <input type="text" name="searchQuery" class="form-control me-2" placeholder="Введіть пошуковий запит" />
+        <select name="searchField" class="form-select me-2">
+            <option value="Id">ID</option>
+            <option value="Brand">Марка</option>
+            <option value="Model">Модель</option>
+            <option value="Year">Рік</option>
+            <option value="Vin">VIN</option>
+            <option value="EngineType">Тип двигуна</option>
+        </select>
+        <button type="submit" class="btn btn-primary">Пошук</button>
+    </form>
+
+    <a href="/Cars/Create" class="btn btn-primary">Додати автомобіль</a>
+</div>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Марка</th>
+            <th>Модель</th>
+            <th>Рік</th>
+            <th>VIN</th>
+            <th>Тип двигуна</th>
+            <th>Дії</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var car in Model)
+        {
+            <tr>
+                <td>@car.Id</td>
+                <td>@car.Brand</td>
+                <td>@car.Model</td>
+                <td>@car.Year</td>
+                <td>@car.Vin</td>
+                <td>@car.EngineType</td>
+                <td>
+                    <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#detailsModal" data-id="@car.Id">
+                        Деталі
+                    </button>
+                    <a href="/Cars/Edit/@car.Id" class="btn btn-warning btn-sm">Редагувати</a>
+                    <a href="/Cars/Delete/@car.Id" class="btn btn-danger btn-sm">Видалити</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<!-- Универсальное модальное окно -->
+<div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detailsModalLabel">Деталі автомобіля</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрити"></button>
+            </div>
+            <div class="modal-body">
+                <p>Завантаження даних...</p> <!-- Данные будут заменяться через JavaScript -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрити</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const detailsModal = document.getElementById('detailsModal');
+
+    detailsModal.addEventListener('show.bs.modal', function (event) {
+        const button = event.relatedTarget; // Кнопка, которая вызвала модальное окно
+        const carId = button.getAttribute('data-id'); // Получаем ID автомобиля
+
+        const modalBody = detailsModal.querySelector('.modal-body');
+        modalBody.innerHTML = '<p>Завантаження даних...</p>'; // Показываем индикатор загрузки
+
+        // Выполняем запрос к серверу
+        fetch(`/Cars/Details/${carId}`)
+            .then(response => response.text())
+            .then(html => {
+                modalBody.innerHTML = html; // Вставляем содержимое PartialView в модальное окно
+            })
+            .catch(error => {
+                modalBody.innerHTML = '<p>Помилка завантаження даних.</p>';
+                console.error(error);
+            });
+    });
+</script>
