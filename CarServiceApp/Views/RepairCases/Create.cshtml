@@ -1,0 +1,19 @@
+﻿@model CarServiceApp.Models.RepairCase
+
+<h2>Додати історію ремонта</h2>
+
+<form asp-action="Create">
+    <input type="hidden" name="carId" value="@ViewBag.CarId" />
+
+    <div class="form-group">
+        <label asp-for="UnresolvedIssues"></label>
+        <input asp-for="UnresolvedIssues" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="RepairHistory"></label>
+        <textarea asp-for="RepairHistory" class="form-control"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Зберегти</button>
+</form>

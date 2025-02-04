@@ -1,0 +1,18 @@
+﻿@model CarServiceApp.Models.Car
+
+<img src="@(string.IsNullOrEmpty(Model.PhotoPath) ? "/content/def.png" : Model.PhotoPath)" class="img-fluid mb-3" alt="Фото автомобіля" />
+<p><strong>Марка:</strong> @Model.Brand</p>
+<p><strong>Модель:</strong> @Model.Model</p>
+<p><strong>Рік:</strong> @Model.Year</p>
+<p><strong>VIN:</strong> @Model.Vin</p>
+<p><strong>Тип двигуна:</strong> @Model.EngineType</p>
+
+@if (Model.RepairCase != null)
+{
+    <p><strong>Історія ремонту:</strong> @Model.RepairCase.RepairHistory</p>
+    <p><strong>Невирішені проблеми:</strong> @Model.RepairCase.UnresolvedIssues</p>
+}
+else
+{
+    <p><em>Дані про ремонт відсутні.</em></p>
+}

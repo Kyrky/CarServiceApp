@@ -1,0 +1,38 @@
+﻿@model CarServiceApp.Models.Car
+
+@{
+    ViewData["Title"] = "Додати машину";
+}
+
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Додати нову машину</h1>
+
+    <form asp-action="Create" method="post">
+        <div class="form-group mb-4">
+            <input asp-for="Brand" class="form-control" placeholder="Марка" />
+            <span asp-validation-for="Brand" class="text-danger"></span>
+        </div>
+        <div class="form-group mb-4">
+            <input asp-for="Model" class="form-control" placeholder="Модель" />
+            <span asp-validation-for="Model" class="text-danger"></span>
+        </div>
+        <div class="form-group mb-4">
+            <input asp-for="Year" class="form-control" placeholder="Рік" />
+            <span asp-validation-for="Year" class="text-danger"></span>
+        </div>
+        <div class="form-group mb-4">
+            <input asp-for="Vin" class="form-control" placeholder="VIN" />
+            <span asp-validation-for="Vin" class="text-danger"></span>
+        </div>
+        <div class="form-group mb-4">
+            <input asp-for="EngineType" class="form-control" placeholder="Тип двигуна" />
+            <span asp-validation-for="EngineType" class="text-danger"></span>
+        </div>
+        <div class="form-group mb-4">
+            <input asp-for="PhotoPath" class="form-control" placeholder="Шлях до фото (залиште порожнім для дефолтного зображення)" />
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary mt-4">Додати</button>
+        </div>
+    </form>
+</div>

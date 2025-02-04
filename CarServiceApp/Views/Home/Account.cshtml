@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Акаунт";
+    var user = ViewBag.User;
+}
+
+<h2 class="text-center">Мій акаунт</h2>
+
+@if (user != null)
+{
+    <p><strong>Ім'я:</strong> @user.Name</p>
+    <p><strong>Електронна пошта:</strong> @user.Email</p>
+
+    <form method="post" asp-action="Logout" asp-controller="Account">
+        <button type="submit" class="btn btn-danger mt-3">Вийти</button>
+    </form>
+}
+else
+{
+    <p>Ви не увійшли до системи.</p>
+    <a href="@Url.Action("Login", "Account")" class="btn btn-primary">Увійти</a>
+    <a class="btn btn-primary" href="@Url.Action("Register", "Account")">Зареєструватись</a>
+}
