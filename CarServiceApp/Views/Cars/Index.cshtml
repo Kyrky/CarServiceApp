@@ -77,17 +77,17 @@
     const detailsModal = document.getElementById('detailsModal');
 
     detailsModal.addEventListener('show.bs.modal', function (event) {
-        const button = event.relatedTarget; // Кнопка, которая вызвала модальное окно
-        const carId = button.getAttribute('data-id'); // Получаем ID автомобиля
+        const button = event.relatedTarget; 
+        const carId = button.getAttribute('data-id'); 
 
         const modalBody = detailsModal.querySelector('.modal-body');
-        modalBody.innerHTML = '<p>Завантаження даних...</p>'; // Показываем индикатор загрузки
+        modalBody.innerHTML = '<p>Завантаження даних...</p>'; 
 
         // Выполняем запрос к серверу
         fetch(`/Cars/Details/${carId}`)
             .then(response => response.text())
             .then(html => {
-                modalBody.innerHTML = html; // Вставляем содержимое PartialView в модальное окно
+                modalBody.innerHTML = html; 
             })
             .catch(error => {
                 modalBody.innerHTML = '<p>Помилка завантаження даних.</p>';
